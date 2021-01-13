@@ -13,11 +13,12 @@ class BookSearch extends React.Component {
   }
 
   updateSearchValue = async (query) => {
+    this.setState({ query });
     const queryResponse = query && await BooksAPI.search(query.trim());
     if (Array.isArray(queryResponse)) {
-      this.setState({ query, booksQuery: queryResponse })
+      this.setState({ booksQuery: queryResponse });
     } else {
-      this.setState({ query, booksQuery: [] });
+      this.setState({ booksQuery: [] });
     }
   }
 
